@@ -168,9 +168,10 @@ int tellUchihaStory(string name, string clan)
 	string command;
 	cout << "\nYou have trained hard for this moment.\n";
 	cout << "You will prove the " + clan + " Clan is an honorable part of this village!\n";
-	command = askText("\nWhat would you like to do? Start your mission now, or buy ninja tools? (start or tools): "); // ask the player to visit a shop, just to get them to practice inputting choices
 	do
 	{
+		command = askText("\nWhat would you like to do? Start your mission now, or buy ninja tools? (start or tools): "); // ask the player to visit a shop, just to get them to practice inputting choices
+	
 		// if they just want to start
 		if (command == "start")
 		{
@@ -183,7 +184,7 @@ int tellUchihaStory(string name, string clan)
 			// inform them how the shopping goes
 			cout << "\nYou decide to stop and buy some ninja tools before you head out.\n";
 			cout << "Why, if it isn't " + name + " of the Sharingan!";
-			cout << "How can I help you today? The usual?";
+			cout << "How can I help you today? The usual? ";
 			cout << "exclaims the shopkeep.\n";
 			cout << "You restock on your usual ninja tools; smoke bombs, paper bombs, and some kunai.\n";
 			cout << "You bid farewell to the shopkeep as you leave for your mission.\n";
@@ -198,10 +199,10 @@ int tellUchihaStory(string name, string clan)
 	} while (command != "start" && command != "tools"); // this process will loop so long as the player does not enter start or tools to continue
 
 	describeSmallVillage(); // describe the small village they arrive at
-	command = askText("\nWhat will you do? (type: interrogate, to interrogate village head. type: cave, to go to the cave.) "); // ask the player what they will do, also provide some prompt on what commands they can enter
 	bool knowsTrap = false; // declare a boolean for if the player knows about the upcoming trap initialized to false
 	do
 	{
+		command = askText("\nWhat will you do? (type: interrogate, to interrogate village head. type: cave, to go to the cave.) "); // ask the player what they will do, also provide some prompt on what commands they can enter
 		// if they choose to interrogate
 		if (command == "interrogate")
 		{
@@ -247,6 +248,7 @@ int tellUchihaStory(string name, string clan)
 		cout << "You struggle to stay standing. ";
 		cout << "But, the entry of the cave collapses in on you.\n";
 		cout << "You died, game over.\n";
+		system("pause");
 		return 0; //return 0 to end the story
 	}
 }
@@ -256,9 +258,10 @@ int tellHyugaStory(string name, string clan)
 	string command;
 	cout << "\nYou have trained hard for this moment.\n";
 	cout << "You will prove the " + clan + " Clan is an honorable part of this village!\n";
-	command = askText("\nWhat would you like to do? Start your mission now, or buy ninja tools? (start or tools): ");
 	do
 	{
+		command = askText("\nWhat would you like to do? Start your mission now, or buy ninja tools? (start or tools): ");
+	
 		if (command == "start")
 		{
 			cout << "\nYou rush off to start your mission right away.\n";
@@ -280,10 +283,10 @@ int tellHyugaStory(string name, string clan)
 	} while (command != "start" && command != "tools");
 
 	describeSmallVillage();
-	command = askText("\nWhat will you do? (type: interrogate, to interrogate village head. type: cave, to go to the cave.) ");
 	bool knowsTrap = false;
 	do
 	{
+		command = askText("\nWhat will you do? (type: interrogate, to interrogate village head. type: cave, to go to the cave. tpe: Byakugan) ");
 		if (command == "interrogate")
 		{
 			cout << "\nYou decide to interrogate the village leader on the whereabouts of the rogue Anbu.\n";
@@ -298,6 +301,7 @@ int tellHyugaStory(string name, string clan)
 		}
 		else if (command == "Byakugan") 
 		{
+			knowsTrap = true;
 			cout << "\nYou activate your Byakugan and sense someone's chakra alone in the cave.\n";
 		}
 		else
@@ -323,6 +327,7 @@ int tellHyugaStory(string name, string clan)
 		cout << "You struggle to stay standing. ";
 		cout << "But, the entry of the cave collapses in on you.\n";
 		cout << "You died, game over.\n";
+		system("pause");
 		return 0;
 	}
 }
@@ -332,9 +337,9 @@ int tellSenjuStory(string name, string clan)
 	string command;
 	cout << "\nYou have trained hard for this moment.\n";
 	cout << "You will protect the legacy of the " + clan + " Clan!\n";
-	command = askText("\nWhat would you like to do? Start your mission now, or buy ninja tools? (start or tools): ");
-	do
-	{
+	do {
+		command = askText("\nWhat would you like to do? Start your mission now, or buy ninja tools? (start or tools): ");
+	
 		if (command == "start")
 		{
 			cout << "\nYou rush off to start your mission right away.\n";
@@ -356,10 +361,11 @@ int tellSenjuStory(string name, string clan)
 	} while (command != "start" && command != "tools");
 
 	describeSmallVillage();
-	command = askText("\nWhat will you do? (type: interrogate, to interrogate village head. type: cave, to go to the cave.) ");
 	bool knowsTrap = false;
 	do
 	{
+		command = askText("\nWhat will you do? (type: interrogate, to interrogate village head. type: cave, to go to the cave.) ");
+		
 		if (command == "interrogate")
 		{
 			knowsTrap = true;
@@ -395,6 +401,7 @@ int tellSenjuStory(string name, string clan)
 		cout << "You struggle to stay standing. ";
 		cout << "But, the entry of the cave collapses in on you.\n";
 		cout << "You died, game over.\n";
+		system("pause");
 		return 0;
 	}
 }
@@ -425,7 +432,7 @@ void describeBattle(string name, string clan, string command)
 		{
 			// display the talk-no-jutsu ending
 			cout << "\nYou approach Akio silently.\n";
-			cout << "\nAkio says: So, " + name + " they sent you after me.";
+			cout << "\nAkio says: So, " + name + " they sent you after me. ";
 			cout << "How heartless of them, to pit master against student.\n";
 			cout << "Here I am, free of the Shinobi world, and yet it pulls me back in\n";
 			cout << "\nYou ask: Why are you doing this?\n";
@@ -440,12 +447,12 @@ void describeBattle(string name, string clan, string command)
 			cout << "I am no longer able to bear the burden of a Shinobi.";
 			cout << "The deaths, the losses, it has all become too much.\n";
 			cout << name + ", if you could please spare me one last kindness? make it painless.\n";
-			cout << "You stare at Akio for an entire minute.";
+			cout << "You stare at Akio for an entire minute. ";
 			cout << "Unsure of what to do, you sit next to him.\n";
 			cout << "You say: Leave the Land of Fire, and never return.\n";
 			cout << "I will tell the Leaf you are dead. Be free, Akio.\n";
 			cout << "You leave the cave and return to the Leaf.\n";
-			cout << "Sometimes, when staring into the firelight";
+			cout << "Sometimes, when staring into the firelight ";
 			cout << "you think of a young student you once had.\n";
 
 		}
@@ -488,17 +495,17 @@ void describeBattle(string name, string clan, string command)
 				// tell them they are not an Uchiha and cannot use genjutsu
 				cout << "\nYou cannot use genjutsu.\n";
 				// they die, a ninja must know their abilities
-				cout << "Akio takes this opprotunity to stab you through the ehart with his Tanto.\n";
+				cout << "Akio takes this opprotunity to stab you through the heart with his Tanto.\n";
 			}
 		}
-		else if (command == "Byakugon") // otherwise if they want to use their Byakugon
+		else if (command == "Byakugan") // otherwise if they want to use their Byakugon
 		{
 			if (clan == "Hyuga") // and if they are a Hyuga
 			{
-				// display the Byakugon ending
+				// display the Byakugan ending
 				cout << "Byakugan! You yell as you activate your clan's dojutsu.\n";
 				cout << "You can see Akio's chakra through the dark of the cave clearly.\n";
-				cout << "His chakra is slightly weaker than usual.";
+				cout << "His chakra is slightly weaker than usual. ";
 				cout << "Probably a result from the wound on his ribs.\n";
 				cout << "Silently you approach him.\n";
 				cout << "Without making a sound you strike his chakra points faster than a normal human eye can see.\n";
@@ -508,10 +515,10 @@ void describeBattle(string name, string clan, string command)
 			}
 			else // otherwise
 			{
-				// inform them they do not have a Byakugon
-				cout << "\nYou do not have a Byakugon.\n";
+				// inform them they do not have a Byakugan
+				cout << "\nYou do not have a Byakugan.\n";
 				// they die, a ninja must know their abilities
-				cout << "Akio takes this opprotunity to stab you through the ehart with his Tanto.\n";
+				cout << "Akio takes this opprotunity to stab you through the heart with his Tanto.\n";
 			}
 		}
 		else if (command == "ninjutsu") // otherwise if they want to use ninjutsu
