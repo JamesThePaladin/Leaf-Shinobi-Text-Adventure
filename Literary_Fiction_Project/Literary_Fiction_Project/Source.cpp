@@ -27,6 +27,8 @@ void describeBattle(string name, string clan, string command);
 
 int main() 
 {
+	//variable for playing the game again
+	char repeat = 'n';
 	// create enum class variable and initialize it with a default value
 	playerStory story = playerStory::Uchiha;
 	// display intro for player
@@ -35,14 +37,18 @@ int main()
 	char answer = askYesOrNo("Would you like to hear the instructions? y/n: ");
 	// give instructions, this code only runs if answer == 'y'
 	giveInstructions(answer);
-	// get player name
-	string name = askText("\nWhat is your name? ");
-	// get player clan
-	string clan = askText("\nWhich clan do you belong to? You have three clans to choose from; Uchiha, Hyuga, or Senju.\n");
-	// show the mission details
-	showMissionDetails(name, clan);
-	// tell the story they chose
-	tellStory(clan, story, name);
+	do
+	{
+		// get player name
+		string name = askText("\nWhat is your name? ");
+		// get player clan
+		string clan = askText("\nWhich clan do you belong to? You have three clans to choose from; Uchiha, Hyuga, or Senju.\n");
+		// show the mission details
+		showMissionDetails(name, clan);
+		// tell the story they chose
+		tellStory(clan, story, name);
+		repeat = askYesOrNo("Would you like to play again?");
+	} while (repeat == 'y');
 
 	return 0;
 }
@@ -299,7 +305,7 @@ int tellHyugaStory(string name, string clan)
 			cout << "\nPlease enter a valid command\n";
 		}
 
-	} while (command != "interrogate" && command != "cave");
+	} while (command != "interrogate" && command != "cave" && command != "Byakugan");
 
 	if (knowsTrap)
 	{
